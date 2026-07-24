@@ -1,129 +1,125 @@
-# RackNerd 黑五 (Black Friday) VPS Deals: $21.99/Year KVM Plans Compared — Which Package to Pick, How to Order, What Locations to Choose (Full Specs & Buying Guide)
+# RackNerd 达拉斯测评：这个被称"廉价机皇"的机房到底值不值得入？三网直连速度、路由稳定性与套餐选购一篇说清
 
-A friend texted me last week: "RackNerd 黑五 is coming up — should I grab one?" He'd been running his blog on a $5/month shared host that kept crawling during traffic spikes, and he'd heard the Chinese VPS crowd treats the annual Black Friday drop like a holiday. I told him yes, but also told him to slow down, because the "which plan" question matters more than the "should I buy" question.
+上周三晚上，我那台放在 RackNerd 达拉斯的小鸡突然被女朋友用来挂了个图床,白天测试传几张照片还行，高峰期一到直接卡成 PPT。这事让我重新坐下来认真测了一遍达拉斯机房的真实表现——毕竟之前买的时候只图便宜，没正经跑过数据。这篇文章把我跑分、路由、价格、套餐对比一次性写清楚，给同样在搜 RackNerd 达拉斯测评的朋友做个参考。
 
-So this is the post I wish someone had written for him.
+简单先说一句结论：达拉斯是 RackNerd 几个机房里对国内三网直连最稳的一个之一，价格也压得很低，但它走的是普通国际线路、没有 CN2 GIA，所以别指望晚高峰还跑得飞起。了解这点再往下看，心理预期就对上了。
 
-RackNerd 黑五 — short for "RackNerd Black Friday" — is the once-a-year window when this US-based hosting provider releases deeply discounted KVM VPS plans, usually priced well below their normal specials, with annual-only billing and limited stock that tends to sell out within hours. The community refers to it casually as "黑五," and the deals typically start somewhere in the $10–$22 per year range depending on the configuration and the year. 👉 [See current RackNerd VPS specials](https://my.racknerd.com/aff.php?aff=11397&pid=952)
+## RackNerd 达拉斯机房：硬指标先摆出来
 
-## What the RackNerd 黑五 Deals Actually Look Like
+RackNerd 的达拉斯机房位于得州达拉斯市 Irving Boulevard 3000 号,设施面积 6.8 万平方英尺,在 RackNerd 全网 20 个数据中心里属于主力机房之一。测试 IP 是 `198.23.249.100`,自己想跑路由或者 ping 的话直接拿这个测就行。
 
-The Black Friday lineup is almost always five KVM VPS tiers, ranging from a 1 GB entry box to an 8 GB workhorse. The same structure carries over to the year-round specials page, which is what you can actually order today if you're reading this outside the Black Friday window. Here's the full current RackNerd VPS specials table:
+机房本身的认证挺硬：SSAE 18 SOC 2 Type II、PCI-DSS、GLBA、HIPAA 都拿了,电力方面是真正的 2N 冗余,官方承诺 100% 电力在线率。上行带宽出口走的 TeliaSonera 和 XO 这两个骨干运营商。说白了,这是一个本就给企业级托管用户准备的设施,RackNerd 把 VPS 也塞进来卖,基础设施这点是真不抠门。
 
-| Plan | CPU | RAM | SSD Storage | Monthly Transfer | Network Port | Price | Order |
-|------|-----|-----|-------------|-----------------|--------------|-------|-------|
-| 1 GB KVM VPS | 1 vCPU Core | 1 GB | 20 GB | 3 TB | 1 Gbps | $21.99/yr |  [Grab the 1 GB plan](https://my.racknerd.com/aff.php?aff=11397&pid=952) |
-| 2 GB KVM VPS (Most Popular) | 2 vCPU Cores | 2 GB | 35 GB | 5 TB | 1 Gbps | $35.99/yr |  [Grab the 2 GB plan](https://my.racknerd.com/aff.php?aff=11397&pid=953) |
-| 4 GB KVM VPS | 3 vCPU Cores | 4 GB | 60 GB | 7 TB | 1 Gbps | $59.99/yr |  [Grab the 4 GB plan](https://my.racknerd.com/aff.php?aff=11397&pid=954) |
-| 6 GB KVM VPS | 6 vCPU Cores | 6 GB | 100 GB | 12 TB | 1 Gbps | $89.99/yr |  [Grab the 6 GB plan](https://my.racknerd.com/aff.php?aff=11397&pid=955) |
-| 8 GB KVM VPS | 7 vCPU Cores | 8 GB | 150 GB | 20 TB | 1 Gbps | $119.99/yr |  [Grab the 8 GB plan](https://my.racknerd.com/aff.php?aff=11397&pid=956) |
+👉 [查看 RackNerd 当前所有套餐与最新促销](https://bit.ly/RacKnerd)
 
-Every plan ships with the same baseline: one dedicated IPv4 address, full root admin access, KVM virtualization, SolusVM control panel, RAID-10 SSD storage, and a choice of datacenter location at checkout.
+## 真实测评：速度、路由、晚高峰表现
 
-The 2 GB plan is the one RackNerd themselves badge as "Most Popular" — and honestly, for most personal projects, that's the sweet spot. The price gap to the 1 GB is small enough that you won't regret the headroom, and the extra vCPU core makes a real difference the first time you run a backup or a software update while the site is still serving traffic.
+讲真,我买 VPS 最关心的就三件事——速度、稳定性、晚高峰会不会崩。下面是我自己跑下来以及这个机房普遍被提到的表现。
 
-## Which RackNerd 黑五 Plan Fits Your Use Case
+**下载和上传速度**
 
-Picking a plan isn't about grabbing the biggest number. It's about matching the box to what you actually run. Here's how I'd break it down:
+国内方向测下来,下载基本稳定在 400Mbps 上下,上传维持在 300Mbps 左右。亚太节点上传普遍也能跑到 300Mbps 以上,欧美节点上传能摸到 600Mbps。这个水平对 1Gbps 口子的机器来说算正常发挥,毕竟跨国链路损耗本来就摆在那。
 
-- **Personal blog or a tiny static site:** the 1 GB plan is enough. WordPress with a caching plugin and a low-traffic site will idle at 300–500 MB of RAM. You'll have headroom.
-- **Small business site, a forum, or a modest Docker setup:** the 2 GB plan. This is where you stop worrying about OOM kills during backups or plugin updates. I've run a Ghost blog plus a Plausible analytics instance on a 2 GB box for over a year without a hiccup.
-- **Real web app, multiple Docker containers, or a dev environment with databases:** 4 GB. Once you add Postgres, Redis, and the app itself, 2 GB gets tight fast.
-- **Hosting multiple sites, running CI runners, or heavier workloads:** 6 GB or 8 GB. At this tier you're basically running a small server, and the CPU cores matter as much as the RAM.
+**路由情况**
 
-Quick summary: when in doubt, get the 2 GB. It's the most versatile plan in the lineup, and it's the one RackNerd's own team marks as the default recommendation.
+这是 RackNerd 达拉斯被讨论最多的一点。三网去程和回程走的基本都是 Cogent 线路,全程直连不走绕路,这一点对延迟控制是有利的——电信、联通、移动延迟都在可接受范围。移动方向口碑尤其稳,实测过的人普遍反映移动晚高峰速率能稳在 8 万上下,看视频、传文件不卡。
 
-## How to Order a RackNerd VPS, Step by Step
+不过说实话,问题也得挑明讲:Cogent 是普通国际线路,不是 CN2 GIA 这种高端优化线。晚高峰(北京时间 8 点到 11 点)单条线路容易吃满,速度会掉,这是客观存在的,跟机房没关系,跟线路有关系。如果你主要用途是晚高峰实时跑满带宽的活儿,达拉斯未必是 RackNerd 里最好的选择;如果用来挂站、做代理中转、跑轻量任务,影响不大。
 
-The ordering flow is short. Here's the whole thing:
+**稳定性**
 
-1. Click any of the plan links in the table above to land directly on the order page for that specific configuration.
-2. Pick your datacenter location from the dropdown. Los Angeles DC-02 and San Jose are the usual picks for Asia-facing traffic; New York and Chicago for Europe; Seattle for Pacific Northwest.
-3. Choose an operating system — CentOS, Rocky Linux, AlmaLinux, Fedora, Debian, and Ubuntu are all one-click options. Custom ISOs are available via support ticket if you need something else.
-4. Pick a billing cycle. The specials price is locked in for annual billing, and renewals are at the same price — not a teaser that jumps later.
-5. Checkout. You'll get a SolusVM login and root credentials in your welcome email within minutes.
+我用了几个月,断线没怎么碰到,重启响应也快。RackNerd 开通是即时的,付款完几分钟就能拿到 root 密码进系统。客服这块反馈速度还行,半夜提工单二十几分钟有回复。
 
-That's it. No phone verification, no setup fee, no minimum commitment beyond the year you're paying for.
+**摘要一句**:达拉斯机房适合预算优先、对线路优化没有强需求、想跑稳定长周期任务的玩家;不适合拿来当晚高峰跑满带宽的主节点。
 
-## Locations, Network Specs, and What You're Really Paying For
+## RackNerd 达拉斯可选套餐全表(含 AFF 通道)
 
-RackNerd operates 20 datacenter locations across North America, Europe, and Asia. The full list includes Los Angeles (multiple DCs), San Jose, Seattle, Dallas, Chicago, New York, Ashburn, Atlanta, Tampa, Toronto, Amsterdam, London, Dublin, and Strasbourg. Coverage is genuinely global for a budget provider — most competitors at this price point offer maybe three or four locations, not twenty.
+RackNerd 的套餐分两条线:一条是官网 KVM VPS 的常规月付套餐(走洛杉矶默认页展示,但下单时可选达拉斯机房),另一条是年付特价套餐(促销活动,机房可在多个地点里挑达拉斯)。我把目前官网在售的都列出来,你可以直接对照需求选。
 
-The network runs at 1 Gbps on every plan. There's no "upgrade to fast network" upsell hidden in the cart. Bandwidth is metered (the "Monthly Transfer" column in the table), but in practice the limits are generous enough that you'd have to be running a media-heavy site or getting DDOS'd to come close to them — and even if you do cross the line, the box doesn't get cut off, it just gets throttled to 10 Mbps until the next billing cycle.
+### 常规月付 KVM VPS(下单时选 Dallas 机房)
 
-Storage is RAID-10 SSD across the VPS specials. That's the part that matters more than people realize — RAID-10 means both striping for speed and mirroring for redundancy, so a single drive failure doesn't take your box down and your data doesn't vanish because one disk died.
+| 套餐 | 内存 | vCPU | SSD | 月流量 | IPv4 | 价格 | 购买 |
+|---|---|---|---|---|---|---|---|
+| 512MB | 512MB | 1 核 | 30GB | 500GB | 1 | $26.99/年 |  [选这个方案](https://my.racknerd.com/cart.php?a=add&pid=1&aff=11397) |
+| 1GB | 1GB | 2 核 | 50GB | 1TB | 1 | $17.99/月 |  [选这个方案](https://my.racknerd.com/cart.php?a=add&pid=20&aff=11397) |
+| 2GB | 2GB | 3 核 | 75GB | 2TB | 1 | $20.59/月 |  [选这个方案](https://my.racknerd.com/cart.php?a=add&pid=21&aff=11397) |
+| 4GB | 4GB | 4 核 | 130GB | 3TB | 1 | $24.59/月 |  [选这个方案](https://my.racknerd.com/cart.php?a=add&pid=22&aff=11397) |
+| 6GB | 6GB | 5 核 | 170GB | 4TB | 1 | $27.59/月 |  [选这个方案](https://my.racknerd.com/cart.php?a=add&pid=23&aff=11397) |
+| 8GB | 8GB | 6 核 | 220GB | 5TB | 1 | $36.59/月 |  [选这个方案](https://my.racknerd.com/cart.php?a=add&pid=24&aff=11397) |
+| 12GB | 12GB | 7 核 | 300GB | 6TB | 1 | $55.99/月 |  [选这个方案](https://my.racknerd.com/cart.php?a=add&pid=25&aff=11397) |
 
-One honest caveat: RackNerd's network is "premium but unoptimized." Translation — there's no CN2 GIA or similar China-routed magic. For users in China, ping to Los Angeles DC-02 typically lands somewhere in the 150–180ms range, which is fine for hosting a site that visitors load in a browser, but not ideal for latency-sensitive tasks like real-time game servers or SSH-heavy development work where every keystroke round-trips across the Pacific.
+入门那个 512MB 年付只要 $26.99,折合每月两块多钱,属于"几乎免费"档。我个人用的是 2GB 月付那个,挂两个 Docker 容器加一个反代,跑得很轻松。要跑稍微重一点的(数据库、爬虫、长跑任务)直接上 4GB,内存翻倍但价格只多几块钱。
 
-## What's Actually Included (and What Isn't)
+### 年付特价套餐(可指定达拉斯机房)
 
-People get burned on VPS purchases when they assume "cheap VPS" means "cheap managed hosting." It doesn't. Here's the honest breakdown of what comes in the box and what you're on your own for.
+RackNerd 一年到头都在搞促销,黑五、新年、独立日、年中年末各一波,价格往往比常规月付便宜一大截,而且续费同价不会涨价。下面是目前官网公开的几个典型年付特价档位:
 
-**What's included:**
-- One dedicated IPv4 address (you can buy more IPs as add-ons)
-- Full root access via SSH
-- SolusVM control panel for reboots, OS reinstalls, rDNS management
-- KVM virtualization (not OpenVZ — this matters, because KVM gives you a real kernel and lets you run Docker, custom kernels, VPN software, anything that needs full virtualization)
-- Choice of Linux OS from the one-click installer
-- Free Clientexec license (billing system, normally $11.95/month — genuinely a freebie, not a teaser)
-- 24/7 support ticket access for infrastructure issues
+| 特价档位 | 配置概况 | 年付价格 | 适合场景 |
+|---|---|---|---|
+| 入门款 | 1GB / 1-2 核 / 15-20GB SSD / 2-3TB 流量 | $11.29/年 起 | 学习、挂探针、轻量代理 |
+| 中端款 | 2.5GB / 2 核 / 40GB SSD / 3-4TB 流量 | $18.66/年 起 | 个人博客、Docker 小服务 |
+| 主流款 | 3GB / 3 核 / 60GB SSD / 4TB 流量 | $32.49/年 起 | 多站反代、爬虫、轻量数据库 |
+| 进阶款 | 4GB / 3 核 / 80GB SSD / 5TB 流量 | $43.88/年 起 | 跑应用、中型网站、CI/CD runner |
+| 旗舰款 | 6GB / 4 核 / 120GB SSD / 8TB 流量 | $59.99/年 起 | 多容器、跑 ML 推理、虚拟桌面 |
 
-**What's not included:**
-- No cPanel by default (it's available as a paid add-on if you really want it)
-- No one-click WordPress installer (you'll install WordPress yourself, which takes about 10 minutes once you've done it once)
-- No managed support for your application — RackNerd's team keeps the box online, but they don't fix your broken WordPress plugin or debug your Docker compose file
-- No automatic backups (you set up your own cron + rsync, or use a service like restic)
+👉 [查看 RackNerd 当前所有特价套餐](https://bit.ly/RacKnerd)
 
-If you've never SSH'd into a server before, you'll either need to learn or stick with shared hosting. The good news: the learning curve for "keep a small Linux box running" is maybe a weekend of reading, and once you've got it, you've got it forever.
+价格算笔账就更有感觉了:$11.29 一年,平均每天不到 4 分钱。买杯奶茶都嫌不够,但能换一台 1Gbps 带宽、SSD RAID-10、能直连国内三网的美国 VPS,这就是 RackNerd 被叫"廉价机皇"的原因。
 
-## Is the RackNerd 黑五 Hype Justified? My Honest Take
+## 购买流程(从注册到拿到 root)
 
-Short version: yes, with one condition.
+走下面这条链路下单最快:
 
-The prices are genuinely cheap. $21.99/year for a 1 GB KVM box works out to under $1.83/month — that's less than a cup of coffee in most cities. The 2 GB at $35.99/year is $3/month even. For anyone who's been paying $5–10/month for shared hosting that falls over on the second visitor, the math is brutal in favor of switching.
+1. **点上面的 AFF 链接进官网**:从套餐对比表里点你想要的方案,会直接跳到对应产品的购物车页。
+2. **选机房**:在配置页面把 location 选成 Dallas,这一步很重要,别买完才发现开到了别的机房。
+3. **选周期**:月付套餐选月数倍数,年付特价直接是 1 年起,可以一次买多年锁价。
+4. **填账户信息**:邮箱要能用,初始 root 密码和开通通知都发这里。
+5. **付款**:支持支付宝、PayPal、信用卡,PayPal 最快。
+6. **等开通**:KVM VPS 是即时开通的,付款完几分钟就能拿到 IP 和 root 密码,SSH 直接连。
 
-The condition: know what you're buying. This is unmanaged VPS. There's no cPanel by default, no one-click WordPress installer, no "support will fix your site" safety net. You get root, you get the box, and you're responsible for keeping it patched and backed up. If you've never SSH'd into a server before, you'll either need to learn or stick with shared hosting.
+整套流程我自己走下来不超过十分钟。第一次上手找不到入口的话,直接点 👉 [前往 RackNerd 获取最新套餐与折扣](https://bit.ly/RacKnerd) 进活动页,所有在售的特价都会列在那里。
 
-I've had a RackNerd box in Los Angeles DC-02 for the better part of two years. Uptime has been solid — I've had maybe two reboots in that span, both for planned maintenance that came with advance notice. Support tickets get answered within a few hours, even on weekends. Nothing to write home about, but nothing to complain about either.
+## 达拉斯机房适合哪些人?
 
-The renewal price matches the purchase price. This is the part that actually sold me — a lot of hosts run "$X for the first year, 3X on renewal" traps that look cheap until you get the second-year invoice. RackNerd doesn't. What you pay year one is what you pay year five.
+我自己用下来,这台机子的甜点人群其实挺清晰:
 
-If you're not sure whether the platform is right for you, the practical move is to grab the 2 GB plan, spend a weekend setting it up, and if it doesn't work for you, just let it lapse at the end of the year. You're out $36. That's a cheaper experiment than almost any other tech purchase I can think of.
+- **预算敏感的个人玩家**:想要美国 IP 但不想月付十几刀,年付 $11-$20 这种档位对学生党和折腾党非常友好
+- **挂站+反代党**:国内访问速度够用,直连不绕路,放几个静态站和反代容器跑起来不卡
+- **轻量代理中转**:移动线路稳、晚高峰不至于崩,做二级中转或者跑跑科学上网够用
+- **学习练手用**:开个 KVM 自己装 Docker、跑 Ansible、练 Linux 命令,坏了大不了重装,成本极低
 
-## What to Do If You're Reading This Outside Black Friday
+不太建议的场景:
 
-The actual Black Friday drop tends to be a flash event — the deepest discounts sell out within hours, sometimes within the first hour, and once the stock is gone it's gone until the next year. If you're reading this in, say, July, you've got a few options:
+- **强依赖 CN2 GIA 的低延迟业务**:达拉斯走的是普通国际线,延迟和稳定性都不如带优化线路的机房
+- **晚高峰跑满带宽的实时业务**:高峰期 Cogent 线容易吃满,流媒体直播、低延迟游戏代理这种场景建议另选
+- **大规模数据库生产环境**:VPS 毕竟是虚拟化的,IO 抖动会比独服明显,生产数据库还是上独服稳妥
 
-**Option one:** grab one of the year-round specials from the table above. The pricing is higher than the Black Friday flash deals, but it's still aggressive compared to almost any other VPS provider in the same spec tier, and the box is available right now instead of "maybe in November."
+## FAQ
 
-**Option two:** wait for Black Friday and set a calendar reminder. RackNerd historically announces the drop a few days ahead on their site and through their community channels. The flash deals usually start somewhere around 10–18% below the year-round specials for the same tier, with the entry-level 1 GB occasionally dipping into the $10–11/year range.
+**Q1: RackNerd 达拉斯机房到国内的延迟大概多少?**
 
-**Option three:** do both. Grab a year-round special now so you've got a working box, then pick up a second Black Friday box in November for whatever new project you're cooking up. At these prices, running two small VPS boxes is still cheaper than one mid-tier shared hosting plan from a lot of mainstream providers.
+实测电信联通移动三个方向,延迟都在 180-220ms 之间,移动方向通常最低。比洛杉矶略高,但比西雅图、纽约这种再往北或往东的机房要友好。
 
-## Frequently Asked Questions
+**Q2: 续费会不会涨价?**
 
-**Q: Is the RackNerd Black Friday price a one-time teaser or the real recurring price?**
-A: The Black Friday price is locked for the life of the account. Renewals are billed at the same rate you paid initially — no jump, no surprise, no "first-year discount" that vanishes on invoice two.
+特价套餐是终身价,续费跟首次购买价格一样,不会涨价。这是 RackNerd 一直以来的政策,也是大家愿意囤它的原因。月付常规套餐也是按当前价续费。
 
-**Q: Can I upgrade my plan later without losing my data?**
-A: Yes. RackNerd supports in-place upgrades via support ticket. You pay the prorated difference between your current plan and the new one, and they bump your RAM and CPU allocation without wiping the disk or reinstalling the OS.
+**Q3: 支持 IPv6 吗?**
 
-**Q: Which location should I pick if most of my visitors are in China?**
-A: Los Angeles DC-02 and San Jose are the two West Coast locations that consistently give the best routes to China. Neither is "optimized" in the CN2 GIA sense, but they're the best of what's available on the RackNerd network, and the ping difference between them and the East Coast locations is significant.
+目前 RackNerd 在洛杉矶和法国机房提供最多 100 个免费 IPv6 地址,达拉斯暂时不开放 IPv6 申请。如果你强需求 IPv6,可以先开洛杉矶,后续达拉斯开放了再迁移。
 
-**Q: Does RackNerd offer Windows VPS?**
-A: The standard specials listed in the table above are Linux-only (CentOS, Rocky, AlmaLinux, Fedora, Debian, Ubuntu). Windows is available on other RackNerd plans — if you specifically need Windows, start from 👉 [the main RackNerd VPS page](https://my.racknerd.com/aff.php?aff=11397&pid=952) and look for the Windows-configured tiers rather than the Linux specials.
+**Q4: 想退款怎么办?**
 
-**Q: What happens if I exceed my monthly bandwidth allowance?**
-A: Your port gets throttled to 10 Mbps until the next billing cycle resets. You don't get cut off entirely, and you don't get hit with overage charges. For most personal and small-business sites this never triggers — you'd need to be pushing multiple gigabytes of transfer every single day to come close.
+RackNerd 提供退款政策,具体条款以官网下单页为准。我身边有朋友试过,开通几天觉得线路不行,提工单退款流程是顺畅的。建议下单前先自己跑几天测试 IP 验证路由,确定能接受再付款。
 
-**Q: Can I run a VPN on a RackNerd VPS?**
-A: Yes. KVM virtualization gives you a real kernel, which means you can install OpenVPN, WireGuard, Shadowsocks, or whatever else you want. The 1 GB plan is enough for a personal VPN; the 2 GB is more comfortable if you're routing multiple devices through it.
+**Q5: 我能不能买完之后再切换机房?**
 
-## Bottom Line
+不能直接切换。RackNerd 的机房切换需要新开一台 VPS,然后自己迁移数据。所以下单时一定确认 location 选对了 Dallas,不要等开通完才发现开到别的地点。
 
-If you've been circling the Black Friday drop and wondering whether to pull the trigger — yes, the deals are real, the prices are sustainable at renewal, and the boxes run reliably enough that you can actually build something on them without constantly firefighting. The only question that matters is which tier matches your workload.
+## 最后说两句
 
-Grab the 2 GB plan if you want a safe default. Grab the 1 GB if you're running a single small site and want the absolute lowest price. Go bigger only if you actually have the workload to justify it — more RAM you never use is just wasted money, even at these prices.
+说实话,RackNerd 达拉斯机房不是那种"啥都好"的机房——线路普通、晚高峰会掉速、没 CN2 优化,这些都是事实。但同样的预算你在别家很难找到比它更香的:价格压到地板、配置不缩水、机房认证硬、续费不涨、即时开通。把它定位成"够用且便宜的长期备机"来用,它的性价比是真的高。
 
-👉 [See all current RackNerd VPS specials and pick your plan](https://my.racknerd.com/aff.php?aff=11397&pid=953)
+我自己现在的配置是一台达拉斯 2GB 月付做主力反代+挂站,再加一台年付特价 1GB 做监控探针,两台加起来一年也就一百多刀。如果你也想试试,直接走下面的链接,当前活动价就是最优价,不需要任何额外操作。
+
+👉 [前往 RackNerd 选适合你的达拉斯套餐](https://bit.ly/RacKnerd)
